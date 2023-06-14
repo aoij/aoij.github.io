@@ -25,8 +25,8 @@ jobs:
       - name: Install dependencies & Generate static files
         run: |
           node -v
-          cnpm i -g hexo-cli
-          cnpm i
+          npm i -g hexo-cli
+          npm i
           hexo clean
           hexo g
       - name: Deploy to Github Pages
