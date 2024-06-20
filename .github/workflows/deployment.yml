@@ -41,4 +41,4 @@ jobs:
           git config --global user.email $GIT_EMAIL
           git commit -m "Site deployed by GitHub Actions"
           git push --force --quiet "https://$GH_TOKEN@$REPO" master:master
-          hexo deploy
+          echo "Deply Successful!"
