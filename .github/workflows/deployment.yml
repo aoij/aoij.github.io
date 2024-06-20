@@ -29,6 +29,7 @@ jobs:
           npm i
           hexo clean
           hexo g
+          hexo d
       - name: Deploy to Github Pages
         env:
           GIT_NAME: aoij
