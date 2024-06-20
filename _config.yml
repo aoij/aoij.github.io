@@ -105,6 +105,6 @@ theme: butterfly
 deploy:
 - type: git
   repository:
-    github: git@github.com:aoij/aoij.github.io.git
+    github: https://github.com/aoij/aoij.github.io
     # coding: git@e.coding.net:godweiyang/godweiyang.git
   branch: master
