@@ -119,6 +119,11 @@ feed:
   order_by: -date
   icon: /img/avatar.png
 
+# 中文标题转拼音永久链接（沿用老站规则，保证历史 URL 不断链)
+permalink_pinyin:
+  enable: true
+  separator: '-'
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:

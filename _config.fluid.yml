@@ -24,6 +24,7 @@ navbar:
     - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
     - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
+    - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
 
 #---------------------------
 # 暗色模式
@@ -108,3 +109,40 @@ footer:
   statistics:
     enable: true
     source: "busuanzi"
+#---------------------------
+# 友链页
+#---------------------------
+links:
+  enable: true
+  banner_img: /img/default.png
+  # 友链成员（沿用老站 bestduan.cn 的友链数据）
+  items:
+    - {
+      title: "CSDN 专栏",
+      intro: "记录学习过程中的各种坑，积累经验",
+      link: "https://blog.csdn.net/qq_43417276",
+      avatar: "https://img-home.csdnimg.cn/images/20201124032511.png"
+    }
+    - {
+      title: "码云专栏",
+      intro: "码云地址",
+      link: "https://gitee.com/godchin",
+      avatar: "https://gitee.com/static/images/logo-black.svg"
+    }
+    - {
+      title: "老王的技术分享大杂烩",
+      intro: "分享一些技术类的心得，和日常折腾笔记",
+      link: "https://www.wyl.im",
+      avatar: "https://www.wyl.im/favicon.ico"
+    }
+  # 友链页底部自定义内容（交换友链说明）
+  custom:
+    enable: true
+    content: |
+      ## 友链交换
+      想要交换友链的小伙伴，欢迎在留言板留言，留言格式：
+
+      - **名称：**你的博客名称
+      - **地址：**你的博客地址
+      - **简介：**一句话简介
+      - **头像：**你的头像地址
