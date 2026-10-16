@@ -1,9 +1,11 @@
 # 文件路径 .github/workflows/deployment.yml
+# 作用：push 到 hexo 分支时，自动构建静态站点并推送到 master 分支（GitHub Pages）
 name: Deployment
 
 on:
   push:
-    branches: [hexo] # only push events on source branch trigger deployment
+    branches: [hexo] # 只有源分支 hexo 的 push 才触发部署
+  workflow_dispatch: # 支持手动触发
 
 jobs:
   hexo-deployment:
@@ -13,22 +15,24 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v2
-        with:
-          submodules: true
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
-          node-version: '12.x'
+          # Hexo 7 要求 Node >= 14，这里用当前 LTS
+          node-version: '20'
+          cache: 'npm'
 
-      - name: Install dependencies & Generate static files
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate static files
         run: |
           node -v
-          npm i -g hexo-cli
-          npm i
-          hexo clean
-          hexo g
+          npx hexo clean
+          npx hexo generate
+
       - name: Deploy to Github Pages
         env:
           GIT_NAME: aoij
@@ -36,9 +40,11 @@ jobs:
           REPO: github.com/aoij/aoij.github.io
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          cd ./public && git init && git add .
-          git config --global user.name $GIT_NAME
-          git config --global user.email $GIT_EMAIL
-          git commit -m "Site deployed by GitHub Actions"
+          cd ./public
+          git init -q
+          git add -A
+          git config --global user.name "$GIT_NAME"
+          git config --global user.email "$GIT_EMAIL"
+          git commit -q -m "Site deployed by GitHub Actions"
           git push --force --quiet "https://$GH_TOKEN@$REPO" master:master
-          echo "Deply Successful!"
+          echo "Deploy Successful!"

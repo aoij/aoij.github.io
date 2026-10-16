@@ -6,3 +6,10 @@ node_modules/
 public/
 .deploy*/
 _multiconfig.yml
+
+# IDE
+.idea/
+.vscode/
+
+# 构建产物与部署缓存
+.deploy_git/

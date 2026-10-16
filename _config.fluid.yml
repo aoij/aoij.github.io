@@ -1,0 +1,110 @@
+# Fluid 主题覆盖配置
+# 官方文档: https://hexo.fluid-dev.com/docs/guide/
+# 说明: 这里只写需要覆盖主题默认值的项，未列出的项一律走主题默认值
+# （完整默认值见 node_modules/hexo-theme-fluid/_config.yml）
+
+#---------------------------
+# 全局
+#---------------------------
+
+# 浏览器标签图标（本地化，不再依赖第三方图床）
+favicon: /img/favicon.png
+apple_touch_icon: /img/favicon.png
+
+#---------------------------
+# 导航栏
+#---------------------------
+navbar:
+  # 导航栏左侧标题
+  blog_title: "钦同学的博客"
+  # 菜单项，key 关联 languages/*.yml 做多语言
+  menu:
+    - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
+    - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
+    - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
+    - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
+    - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
+
+#---------------------------
+# 暗色模式
+#---------------------------
+dark_mode:
+  enable: true
+  # auto: 优先跟随系统，其次按访客本地时间 18:00-6:00 自动进入暗色
+  default: auto
+
+#---------------------------
+# 首页
+#---------------------------
+index:
+  banner_img: /img/default.png
+  banner_img_height: 100
+  banner_mask_alpha: 0.3
+  # 首页副标题
+  slogan:
+    enable: true
+    text: "记录技术、折腾与生活"
+  # 自动截取文章摘要
+  auto_excerpt:
+    enable: true
+  # 文章元信息
+  post_meta:
+    date: true
+    category: true
+    tag: true
+
+#---------------------------
+# 文章页
+#---------------------------
+post:
+  banner_img: /img/default.png
+  meta:
+    date:
+      enable: true
+      format: "LL"
+    # 字数统计与阅读时长（由主题内置 helper 提供，无需额外插件）
+    wordcount:
+      enable: true
+    min2read:
+      enable: true
+  # 文章结尾版权声明
+  copyright:
+    enable: true
+    license: 'BY-NC-SA'
+    author:
+      enable: true
+
+#---------------------------
+# 归档 / 分类 / 标签页
+#---------------------------
+archive:
+  banner_img: /img/default.png
+
+category:
+  enable: true
+  banner_img: /img/default.png
+
+tag:
+  enable: true
+  banner_img: /img/default.png
+
+#---------------------------
+# 关于页
+#---------------------------
+about:
+  enable: true
+  banner_img: /img/default.png
+  avatar: /img/avatar-godchin.png
+  name: "GodChin"
+  intro: "关注 Python / TypeScript / Docker / AI API 接入与自动化部署"
+  icons:
+    - { class: "iconfont icon-github-fill", link: "https://github.com/aoij", tip: "GitHub" }
+
+#---------------------------
+# 页脚
+#---------------------------
+footer:
+  # 访问量统计（不蒜子）
+  statistics:
+    enable: true
+    source: "busuanzi"

@@ -8,14 +8,13 @@ subtitle: ''
 description: ''
 keywords:
 author: GodChin
-language: en
-timezone: ''
+language: zh-CN
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://aoij.github.io
 root: /
-#http://localhost:4000/aoij/aoij.github.io/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -82,7 +81,8 @@ meta_generator: true
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
+## 用 'date' 而不是 'mtime'：CI 是全新 checkout，mtime 会变成构建时间，导致「更新时间」错乱
+updated_option: 'date'
 
 # Pagination
 ## Set per_page to 0 to disable pagination
@@ -98,7 +98,26 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: butterfly
+theme: fluid
+
+# 搜索索引（Fluid 主题自带生成器，无需额外插件）
+# Sitemap / RSS
+sitemap:
+  path: sitemap.xml
+  rel: false
+  tags: true
+  categories: true
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content: true
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+  icon: /img/avatar.png
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -106,5 +125,4 @@ deploy:
 - type: git
   repository:
     github: https://github.com/aoij/aoij.github.io
-    # coding: git@e.coding.net:godweiyang/godweiyang.git
   branch: master
