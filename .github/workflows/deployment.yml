@@ -7,6 +7,10 @@ on:
     branches: [hexo] # 只有源分支 hexo 的 push 才触发部署
   workflow_dispatch: # 支持手动触发
 
+# 授予 GITHUB_TOKEN 推送内容到仓库的权限（用于部署到 master 分支）
+permissions:
+  contents: write
+
 jobs:
   hexo-deployment:
     runs-on: ubuntu-latest
@@ -38,7 +42,8 @@ jobs:
           GIT_NAME: aoij
           GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
           REPO: github.com/aoij/aoij.github.io
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          # 使用 GitHub 自动提供的 GITHUB_TOKEN，避免个人令牌过期导致部署失败
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd ./public
           git init -q
@@ -46,5 +51,5 @@ jobs:
           git config --global user.name "$GIT_NAME"
           git config --global user.email "$GIT_EMAIL"
           git commit -q -m "Site deployed by GitHub Actions"
-          git push --force --quiet "https://$GH_TOKEN@$REPO" master:master
+          git push --force --quiet "https://x-access-token:$GH_TOKEN@$REPO" master:master
           echo "Deploy Successful!"
